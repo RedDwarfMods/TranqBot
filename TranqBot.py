@@ -115,13 +115,12 @@ async def on_reaction_add(reaction, user):
     role = discord.utils.get(server.roles, name=TRANQ_ROLE_NAME)
 
     print(f"Received emoji: {reaction.emoji} (type: {type(reaction.emoji)})")
-
-    """ if isinstance(reaction.emoji, discord.PartialEmoji):
-        emoji_name = str(reaction.emoji.name)
+    
+    # Get emoji name safely (handles custom and unicode emojis)
+    if isinstance(reaction.emoji, str):
+        emoji_name = reaction.emoji
     else:
-        emoji_name = str(reaction.emoji)"""
-
-    emoji_name = reaction.emoji.name
+        emoji_name = reaction.emoji.name
 
     if emoji_name != TRANQ_EMOJI_NAME and KIBBLE_EMOJI_NAME not in emoji_name:
         print(f"Ignoring reaction with emoji: {emoji_name}")
