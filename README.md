@@ -1,4 +1,4 @@
-*** Setup ***
+# Setup
 
 Create a ".env" file (exmaple included) with your bot token and discord details.
 
